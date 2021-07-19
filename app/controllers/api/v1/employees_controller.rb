@@ -1,7 +1,7 @@
 class Api::V1::EmployeesController < ApiController
   before_action :set_employee, only: [:show]
 
-  # activerecordのレコードが見つからなければ404を返す
+  # ActiveRecordのレコードが見つからなければ404 not foundを応答する
   rescue_from ActiveRecord::RecordNotFound do |exception|
     render json: { error: '404 not found' }, status: 404
   end
@@ -17,7 +17,7 @@ class Api::V1::EmployeesController < ApiController
 
   private
 
-  def set_employee
-    @employee = Employee.find(params[:id])
-  end
+    def set_employee
+      @employee = Employee.find(params[:id])
+    end
 end
